@@ -2,7 +2,6 @@
 
 ## Installation
 
-(I actually haven't put it on rubygems.org yet)
 `$ gem install music`
 
 ## The main function of `musician` is performing a key change in a song
@@ -160,7 +159,6 @@ Haven't put these chords in yet:
 
 ##インストール
 
-(まだ rubygems.org に載っていません)
 `$ gem install musician`
 
 ##`musician`の主要のメソッドは`key_change()`、歌の転調を行うメソッドです。
