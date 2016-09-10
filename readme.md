@@ -61,7 +61,6 @@ it will automatically be changed into a sharp "♯" or flat "♭" respectively
 When the `key_change()` method is called, an option is passed as the second argument.<br/>
 This determines how the chords of the song are changed.
 
-As seen in the function, the last argument is an option.
 There are 4 options that can be chosen from
 ```ruby
 :sharp # This is the same as :default
@@ -70,7 +69,6 @@ There are 4 options that can be chosen from
 :all_flat
 ```
 
-The option decides how the chords will be changed.
 ###Option 1 (:sharp)
 ```ruby
 > key = "G"
@@ -180,7 +178,7 @@ Haven't put these chords in yet:
 #=> "A G♯ F♯m D "
 ```
 `Song`のインスタンス変数が作られる時に、渡されたkey(文字列)とchords(文字列の配列)が`Chord`というクラスのインスタンス変数として作られます。
-上記のコードで定義されたsongインスタンス変数を参照すると、オブジェクトが返されます。
+上記のコードで定義されたsongインスタンス変数のキーである`song.key`を参照すると、オブジェクトが返されます。
 ```ruby
 > p song.key
 #=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
