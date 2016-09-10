@@ -22,7 +22,7 @@ become a new object, `Chord`
 
 Looking at the previous example of code, you can see that the key returns an object instead of a string
 ```ruby
-p song.key
+> p song.key
 #=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
 ```
 
@@ -56,7 +56,7 @@ it will automatically be changed into a sharp "♯" or flat "♭" respectively
 > flat_chord.name
 #=> "G♭"
 ```
-###Key change Options
+###Key change options
 When the `key_change()` method is called, an option is passed as the second argument.<br/>
 This determines how the chords of the song are changed.
 
@@ -75,7 +75,7 @@ The option decides how the chords will be changed.
 > key = "G"
 > chords = ["G", "Gb", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :default)
+> song = song.key_change("A", :sharp)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
@@ -119,7 +119,7 @@ The option decides how the chords will be changed.
 > key = "G"
 > chords = ["G", "Gb", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :all_sharp)
+> song = song.key_change("A", :all_flat)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
