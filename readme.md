@@ -10,7 +10,8 @@
 > key = "G"
 > chords = ["G", "F#", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :default)
+> new_key = "A"
+> song = song.key_change(new_key, :default)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
@@ -75,7 +76,8 @@ The option decides how the chords will be changed.
 > key = "G"
 > chords = ["G", "Gb", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :sharp)
+> new_key = "A"
+> song = song.key_change(new_key, :sharp)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
@@ -90,7 +92,8 @@ The option decides how the chords will be changed.
 > key = "G"
 > chords = ["G", "F♯", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :flat)
+> new_key = "A"
+> song = song.key_change(new_key, :flat)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
@@ -105,7 +108,8 @@ The option decides how the chords will be changed.
 > key = "G"
 > chords = ["G", "Gb", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :all_sharp)
+> new_key = "A"
+> song = song.key_change(new_key, :all_sharp)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
@@ -119,7 +123,8 @@ The option decides how the chords will be changed.
 > key = "G"
 > chords = ["G", "Gb", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :all_flat)
+> new_key = "A"
+> song = song.key_change(new_key, :all_flat)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
@@ -167,7 +172,8 @@ Haven't put these chords in yet:
 > key = "G"
 > chords = ["G", "F#", "Em", "C"]
 > song = Song.new(key, chords)
-> song = song.key_change("A", :default)
+> new_key = "A"
+> song = song.key_change(new_key, :default)
 > song.chords.each do |chord|
 >   print "#{chord.name} "
 > end
@@ -176,7 +182,7 @@ Haven't put these chords in yet:
 `Song`のインスタンス変数が作られる時に、渡されたkey(文字列)とchords(文字列の配列)が`Chord`というクラスのインスタンス変数として作られます。
 上記のコードで定義されたsongインスタンス変数を参照すると、オブジェクトが返されます。
 ```ruby
-p song.key
+> p song.key
 #=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
 ```
 
