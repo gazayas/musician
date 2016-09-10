@@ -7,7 +7,7 @@
 
 ## The main function of `musician` is performing a key change in a song
 
-```ruby:test.rb
+```ruby
 > key = "G"
 > chords = ["G", "F#", "Em", "C"]
 > song = Song.new(key, chords)
@@ -68,7 +68,7 @@ it will automatically be changed into a sharp "♯" or flat "♭" respectively
 
 ##`musician`の主要のメソッドは`key_change()`であり、転調を行うことです
 
-```ruby:test.rb
+```ruby
 > key = "G"
 > chords = ["G", "F#", "Em", "C"]
 > song = Song.new(key, chords)
