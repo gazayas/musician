@@ -209,3 +209,103 @@ Haven't put these chords in yet:
 > flat_chord.name
 #=> "G♭"
 ```
+
+##`key_change()`のオプション
+`key_change()`の２つ目の引数はオプションです。<br/>
+これは、歌のコードはどんな風に転調されるかを決めます。
+
+４つのオプションがあります：
+```ruby
+:sharp # これは「:default」と同じです
+:flat
+:all_sharp
+:all_flat
+```
+
+###オプション１ (:sharp)
+```ruby
+> key = "G"
+> chords = ["G", "Gb", "Em", "C"]
+> song = Song.new(key, chords)
+> new_key = "A"
+> song = song.key_change(new_key, :sharp)
+> song.chords.each do |chord|
+>   print "#{chord.name} "
+> end
+#=> "A A♭ F♯m D "
+
+# そもそもフラットであったコードはそのままフラットに変換されます
+# それ以外のコードはシャープに変換されます（「F♯m」みたいに）
+```
+
+###オプション２ (:flat)
+```ruby
+> key = "G"
+> chords = ["G", "F♯", "Em", "C"]
+> song = Song.new(key, chords)
+> new_key = "A"
+> song = song.key_change(new_key, :flat)
+> song.chords.each do |chord|
+>   print "#{chord.name} "
+> end
+#=> "A G♯ G♭m D "
+
+# そもそもシャープであったコードはそのままシャープに変換されます
+# それ以外のコードはフラットに変換されます（「G♭m」みたいに）
+```
+
+###オプション３ (:all_sharp)
+```ruby
+> key = "G"
+> chords = ["G", "Gb", "Em", "C"]
+> song = Song.new(key, chords)
+> new_key = "A"
+> song = song.key_change(new_key, :all_sharp)
+> song.chords.each do |chord|
+>   print "#{chord.name} "
+> end
+#=> "A G♯ F♯m D "
+
+# 対象となるコードは全部シャープに変換されます
+```
+
+###オプション４ (:all_flat)
+```ruby
+> key = "G"
+> chords = ["G", "Gb", "Em", "C"]
+> song = Song.new(key, chords)
+> new_key = "A"
+> song = song.key_change(new_key, :all_flat)
+> song.chords.each do |chord|
+>   print "#{chord.name} "
+> end
+#=> "A A♭ G♭m D "
+# 対象となるコードは全部フラットに変換されます
+```
+##使用可能なコード
+下記のコードは使用できます：
+```ruby
+# コードやキーの語尾として追加できます
+# 例えば: "Am7"
+"dim7"
+"dim"
+"2"
+"sus4"
+"sus"
+"maj7"
+"maj"
+"m7"
+"m"
+"7"
+"6"
+"9"
+"aug"
+"11"
+```
+
+##まだ
+下記のadditionはまだ使えません：
+```ruby
+"add2"
+"add9"
+```
