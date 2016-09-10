@@ -21,7 +21,7 @@
 When a `Song` instance variable is created, the key (a string) and the chords (an array of strings)
 become a new object, `Chord`
 
-Looking at the previous example of code, you can see that the key returns an object instead of a string
+Looking at the previous example of code, you can see that `song.key` returns an object instead of a string
 ```ruby
 > p song.key
 #=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
