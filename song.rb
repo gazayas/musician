@@ -28,7 +28,9 @@ class Song
       difference = 0
     end
 
-    chords.map do |chord|
+    new_chord_array = []
+
+    new_chord_array = chords.map do |chord|
       if key_up == true
         new_position = chord.position + difference
         if new_position > 12
@@ -45,22 +47,24 @@ class Song
       case option
       when :default || :sharp then
         if chord.flat?
-          Chord.new chord.Flat_chords[new_position] + chord.addition
+          chord.Flat_chords[new_position] + chord.addition
         else
-          Chord.new chord.Sharp_chords[new_position] + chord.addition
+          chord.Sharp_chords[new_position] + chord.addition
         end
       when :flat then
         if chord.sharp?
-          Chord.new chord.Sharp_chords[new_position] + chord.addition
+          chord.Sharp_chords[new_position] + chord.addition
         else
-          Chord.new chord.Flat_chords[new_position] + chord.addition
+          chord.Flat_chords[new_position] + chord.addition
         end
       when :all_sharp
-        Chord.new chord.Sharp_chords[new_position] + chord.addition
+        chord.Sharp_chords[new_position] + chord.addition
       when :all_flat
-        Chord.new chord.Flat_chords[new_position] + chord.addition
+        chord.Flat_chords[new_position] + chord.addition
       end
     end
+
+    Song.new(new_key.name, new_chord_array)
 
   end
 

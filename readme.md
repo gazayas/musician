@@ -7,13 +7,14 @@
 `$ gem install music`
 
 ```ruby
-key = "G"
-chords = ["G", "F#", "Em", C]
-song = Song.new(key, chords)
-song = song.key_change("A", :default)
-song.chords.each |chord|
-  print "#{chord.name} "
-end
+> key = "G"
+> chords = ["G", "F#", "Em", "C"]
+> song = Song.new(key, chords)
+> song = song.key_change("A", :default)
+> song.chords.each do |chord|
+>   print "#{chord.name} "
+> end
+#=> "A G♯ F♯m D "
 ```
 
 When a `Song` class is created, the key (a string) and the chords (an array of strings)
