@@ -216,7 +216,7 @@ Haven't put these chords in yet:
 
 ４つのオプションがあります：
 ```ruby
-:sharp # これは「:default」と同じです
+:sharp # 「:default」と同じです
 :flat
 :all_sharp
 :all_flat
