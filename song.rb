@@ -32,12 +32,12 @@ class Song
 
     new_chord_array = chords.map do |chord|
       if key_up == true
-        new_position = chord.position + difference
+        new_position = (chord.position + 1) + difference
         if new_position > 12
           new_position -= 12
         end
       else
-        new_position = chord.position - difference
+        new_position = (chord.position + 1) - difference
         if new_position < 1
           new_position += 12
         end

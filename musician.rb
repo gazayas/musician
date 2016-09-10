@@ -9,3 +9,5 @@ song = song.key_change("A", :default)
 song.chords.each do |chord|
   print "#{chord.name} "
 end
+chord = Chord.new("G#m7")
+p chord.position

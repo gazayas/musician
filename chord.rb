@@ -30,9 +30,9 @@ class Chord
     # 1が足されないと計算がうまくできないから
     # そして配列が正しく定義されるように、new_position -= 1 を def key_change ... end の中に行う
     if sharp?
-      @Sharp_chords.index(sanitized_name) + 1
+      @Sharp_chords.index(sanitized_name)
     else
-      @Flat_chords.index(sanitized_name) + 1
+      @Flat_chords.index(sanitized_name)
     end
   end
 
