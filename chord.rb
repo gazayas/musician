@@ -16,12 +16,13 @@ class Chord
     @Flat_chords = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
   end
 
+  # 真偽を返して欲しかったから次のように書きました
   def sharp?
-    name.match(/#/) || name.match(/♯/)
+    !!name.match(/#/) || !!name.match(/♯/)
   end
 
   def flat?
-    name.match(/b/) || name.match(/♭/)
+    !!name.match(/b/) || !!name.match(/♭/)
   end
 
   def position
