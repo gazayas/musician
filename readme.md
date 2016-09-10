@@ -2,7 +2,7 @@
 
 ## Installation
 
-`$ gem install music`
+`$ gem install musician`
 
 ## The main function of `musician` is performing a key change in a song
 
