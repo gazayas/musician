@@ -2,12 +2,10 @@ require './music'
 require './chord'
 require './song'
 
+chords = ["G", "Gb", "Em", "C"]
 key = "G"
-chords = ["G", "F#", "Em", "C"]
 song = Song.new(key, chords)
 song = song.key_change("A", :default)
 song.chords.each do |chord|
-  print "#{chord.name} "
+  puts chord.name
 end
-chord = Chord.new("G#m7")
-p chord.position
