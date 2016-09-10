@@ -4,7 +4,7 @@
 
 `$ gem install musician`
 
-## The main function of `musician` is performing a key change in a song
+## The main method of `musician` is `key_change()`
 
 ```ruby
 > key = "G"
