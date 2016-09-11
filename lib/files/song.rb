@@ -1,7 +1,6 @@
 class Song
 
   attr_accessor :key, :chords, :title, :tempo
-  attr_reader :Sharp_chords, :Flat_chords
 
   # keyは文字列で、chordsは文字列の配列
   def initialize(key, chords)
@@ -15,7 +14,8 @@ class Song
   end
 
   def key_change(new_key, option)
-    new_key = Chord.new(new_key)
+    # unless new_key.instance_of? Chord then new_key = Chord.new(new_key)
+    new_key = Chord.new(new_key) # もうすでにChordクラスであればこれを飛ばすようにする
 
     if key.position < new_key.position
       key_up = true

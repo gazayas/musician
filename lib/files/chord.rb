@@ -1,38 +1,30 @@
-class Chord
+class Chord < Note
 
-  Sharp = "♯"
-  Flat = "♭"
-
-  attr_accessor :name, :sanitized_name, :addition
-  attr_reader :Sharp_chords, :Flat_chords
+  attr_accessor :name, :raw_name, :addition
 
   def initialize(name)
-    name = name.tr("#b", "#{Sharp}#{Flat}") # gsub()の変わりに「tr」を使ってる（・ω・）
+    # ちょっとややこしいし良くないかもしれないけど、
+    # 一応 @name が chord の name になってて、@raw_name が addition (maj7, dim とか)なしの name
+    # こう： @name #=> "G♭m" @raw_name #=> "G♭"
+    # でも、Note.name は普通は maj7 や dim とかはないから、OOP においては Chord.name はおかしいかもしれない
+    # Note.name は Chord.name と違うので、OOPの考え方においては良くないかもしれない。
+    # でも、Note.name と Chord.name はバリ分かりやすいと思うのでそのようにしたい。
+    # とりあえす、Chord.name は Note.name とは違うという風に書いています。
     @name = name
-    sanitized_elements = sanitize_method
-    @sanitized_name = sanitized_elements[0]
-    @addition = sanitized_elements[1]
-    @Sharp_chords = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-    @Flat_chords = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
+    raw_elements = sanitize_method
+    super(raw_elements[0]) # 一応 raw_name で Note のインスタンス変数を作る
+    @raw_name = change_symbol
+    @addition = raw_elements[1]
+    @name = name
+    @name = change_symbol
   end
 
-  # 真偽を返して欲しかったから次のように書きました
-  def sharp?
-    !!name.match(/#/) || !!name.match(/♯/)
-  end
-
-  def flat?
-    !!name.match(/b/) || !!name.match(/♭/)
-  end
-
+  # note.rbだけで置くようにしたいけど、raw_nameが。。。
   def position
-    # 1を足す理由は、key_changeの中で使うためです
-    # 1が足されないと計算がうまくできないから
-    # そして配列が正しく定義されるように、new_position -= 1 を def key_change ... end の中に行う
     if sharp?
-      @Sharp_chords.index(sanitized_name)
+      @Sharp_chords.index(raw_name)
     else
-      @Flat_chords.index(sanitized_name)
+      @Flat_chords.index(raw_name)
     end
   end
 
