@@ -65,12 +65,12 @@ class Chord < Note
     end
 
     sanitized_chord_array = []
-    if addition != ""
+    if !addition.empty?
       sanitized_chord_array << name.gsub(addition, "")
       sanitized_chord_array << addition
     else
       sanitized_chord_array << name
-      sanitized_chord_array << ""
+      sanitized_chord_array << String.new
     end
 
   end
