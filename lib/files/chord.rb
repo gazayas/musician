@@ -31,7 +31,10 @@ class Chord < Note
   private
   def sanitize_method
 
-    addition = ""
+    addition = String.new
+
+    # 全てのadditionsの文字列が入ってるADDITIONSという配列の定数を作って、
+    # もしnameがマッチするなら代入するという風にcase文を簡潔すること
 
     case name
     when /dim7/ then
@@ -64,13 +67,13 @@ class Chord < Note
       addition = "11"
     end
 
-    sanitized_chord_array = []
+    sanitized_chord_array = Array.new
     if !addition.empty?
       sanitized_chord_array << name.gsub(addition, "")
       sanitized_chord_array << addition
     else
       sanitized_chord_array << name
-      sanitized_chord_array << String.new
+      sanitized_chord_array << addition # String.newのまま
     end
 
   end
