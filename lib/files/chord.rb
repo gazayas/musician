@@ -1,5 +1,8 @@
 class Chord < Note
 
+  # これを def sanitize_method で使うこと
+  ADDITIONS = ["dim7", "dim", "2", "sus4", "sus", "maj7", "maj", "m7", "m", "aug", "7", "6", "9", "11"]
+
   attr_accessor :name, :raw_name, :addition
 
   def initialize(name)
@@ -35,7 +38,6 @@ class Chord < Note
 
     # 全てのadditionsの文字列が入ってるADDITIONSという配列の定数を作って、
     # もしnameがマッチするなら代入するという風にcase文を簡潔すること
-
     case name
     when /dim7/ then
       addition = "dim7"
