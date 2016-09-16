@@ -11,8 +11,7 @@ key = "G"
 chords = ["G", "F#", "Em", "C"]
 song = Song.new(key, chords)
 song = song.key_change("A") # Change to key of A
-new_chords = song.chord_names
-p new_chords
+p song.chord_names
 #=> ["A", "G♯", "F♯m", "D"]
 ```
 
@@ -83,8 +82,7 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :sharp)
-new_chords = song.chord_names
-p new_chords
+p song.chord_names
 #=> ["A", "A♭", "F♯m", "D"]
 
 # Any chord that was originally flat will stay flat if applicable
@@ -98,7 +96,7 @@ chords = ["G", "F♯", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :flat)
-new_chords = song.chord_names
+p song.chord_names
 #=> ["A", "G♯", "G♭m", "D"]
 
 # Any chord that was originally sharp will stay sharp if applicable
@@ -112,8 +110,7 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_sharp)
-new_chords = song.chord_names
-p new_chords
+p song.chord_names
 #=> ["A", "G♯", "F♯m", "D"]
 
 # All applicable chords will be changed into sharps
@@ -126,8 +123,7 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_flat)
-new_chords = song.chord_names
-p new_chords
+p song.chord_names
 #=> ["A", "A♭", "G♭m", "D"]
 
 # All applicable chords will be changed into flats
@@ -174,8 +170,7 @@ key = "G"
 chords = ["G", "F#", "Em", "C"]
 song = Song.new(key, chords)
 song = song.key_change("A") # 「A」に転調します
-new_chords = song.chord_names
-p new_chords
+p song.chord_names
 #=> ["A", "G♯", "F♯m", "D"]
 ```
 
@@ -247,8 +242,7 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :sharp)
-new_chords = song.chord_names
-p new_chords
+p song.chord_names
 #=> ["A", "A♭", "F♯m", "D"]
 
 # そもそもフラットであったコードはそのままフラットに変換されます
@@ -262,7 +256,7 @@ chords = ["G", "F♯", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :flat)
-new_chords = song.chord_names
+p song.chord_names
 #=> ["A", "G♯", "G♭m", "D"]
 
 # そもそもシャープであったコードはそのままシャープに変換されます
@@ -276,7 +270,7 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_sharp)
-p new_chords
+p song.chord_names
 #=> ["A", "G♯", "F♯m", "D"]
 
 # 対象となるコードは全部シャープに変換されます
@@ -289,8 +283,7 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_flat)
-new_chords = song.chord_names
-p new_chords
+p song.chord_names
 #=> ["A", "A♭", "G♭m", "D"]
 
 # 対象となるコードは全部フラットに変換されます
