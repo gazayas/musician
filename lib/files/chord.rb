@@ -1,7 +1,5 @@
 class Chord < Note
 
-  #ADDITIONS = ["dim7", "dim", "2", "sus4", "sus", "maj7", "maj", "m7", "m", "aug", "7", "6", "9", "11"]
-
   attr_accessor :name, :raw_name, :addition
 
   def initialize(name)
