@@ -13,6 +13,12 @@ class Song
     @tempo = ""
   end
 
+  def chord_names
+    chords.map do |chord|
+      chord.name
+    end
+  end
+
   def key_change(new_key, option=:sharp)
     # unless new_key.instance_of? Chord then new_key = Chord.new(new_key)
     new_key = Chord.new(new_key) # もうすでにChordクラスであればこれを飛ばすようにする

@@ -27,6 +27,12 @@ class KeyChangeTest < Minitest::Test
     assert_equal ["G", "Em", "C", "D"], new_chords
   end
 
-  
+  def test_song_method_returns_array
+    song = Song.new("G", ["G", "Em", "C", "D"])
+    chord_array = song.chord_names
+    assert_equal ["G", "Em", "C", "D"], chord_array
+  end
+
+
 
 end

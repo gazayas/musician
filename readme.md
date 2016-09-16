@@ -10,16 +10,27 @@
 key = "G"
 chords = ["G", "F#", "Em", "C"]
 song = Song.new(key, chords)
-new_key = "A"
-song = song.key_change(new_key)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A G♯ F♯m D "
+song = song.key_change("A") # Change to key of A
+new_chords = song.chord_names
+p new_chords
+#=> ["A", "G♯", "F♯m", "D"]
 ```
+
+There are 3 classes in `musician`
+`Note`, `Chord`, and `Song`
 
 When a `Song` instance variable is created, the key (a string) and the chords (an array of strings)
 become a new object, `Chord`
+
+```ruby
+# after creating a new instance variable,
+p song.chords
+# will return an array of objects
+
+# if you just want the chords as an array of strings though,
+p song.chord_names
+# will return that for you, like in the example code above
+```
 
 Looking at the previous example of code, you can see that `song.key` returns an object instead of a string
 ```ruby
@@ -27,7 +38,7 @@ p song.key
 #=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
 ```
 
-A Chord object can also be created individually
+Here's a look at the `Chord` class
 ```ruby
 chord = Chord.new("G#m7")
 chord.sharp?
@@ -72,10 +83,9 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :sharp)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A A♭ F♯m D "
+new_chords = song.chord_names
+p new_chords
+#=> ["A", "A♭", "F♯m", "D"]
 
 # Any chord that was originally flat will stay flat if applicable
 # In any other case, they will become sharp (Like "F♯m")
@@ -88,10 +98,8 @@ chords = ["G", "F♯", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :flat)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A G♯ G♭m D "
+new_chords = song.chord_names
+#=> ["A", "G♯", "G♭m", "D"]
 
 # Any chord that was originally sharp will stay sharp if applicable
 # In any other case, they will become flat (Like "G♭m")
@@ -104,10 +112,9 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_sharp)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A G♯ F♯m D "
+new_chords = song.chord_names
+p new_chords
+#=> ["A", "G♯", "F♯m", "D"]
 
 # All applicable chords will be changed into sharps
 ```
@@ -119,10 +126,10 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_flat)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A A♭ G♭m D "
+new_chords = song.chord_names
+p new_chords
+#=> ["A", "A♭", "G♭m", "D"]
+
 # All applicable chords will be changed into flats
 ```
 
@@ -166,21 +173,33 @@ Haven't put these chords in yet:
 key = "G"
 chords = ["G", "F#", "Em", "C"]
 song = Song.new(key, chords)
-new_key = "A"
-song = song.key_change(new_key)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A G♯ F♯m D "
+song = song.key_change("A") # 「A」に転調します
+new_chords = song.chord_names
+p new_chords
+#=> ["A", "G♯", "F♯m", "D"]
 ```
-`Song`のインスタンス変数が作られる時に、渡されたkey(文字列)とchords(文字列の配列)が`Chord`というクラスのインスタンス変数として作られます。
-上記のコードで定義されたsongインスタンス変数のキーである`song.key`を参照すると、オブジェクトが返されます。
+
+`musician`では、３つのクラスが存在しています。
+`Note`、それを継承する`Chord`、そして`Song`です。
+
+`Song`のインスタンス変数が作られる時に、渡されたkey(文字列)とchords(文字列の配列)が`Chord`クラスのインスタンス変数として作られます。
+```ruby
+# songのインスタンス変数を作ったら、
+p song.chords
+# はオブジェクトの配列を返します
+
+# オブジェクトじゃなくて文字列の配列だけが要るなら、
+p song.chord_names
+# は、上記のコードみたいに文字列の配列を返します。
+```
+
+上記のコードで定義されたsongインスタンス変数のキーである`song.key`を参照すると、オブジェクトが返されることが分かります。
 ```ruby
 p song.key
 #=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
 ```
 
-また、`Chord`のインスタンス変数が単位で作ることも可能です。
+`Chord`クラスのメソッド：
 ```ruby
 chord = Chord.new("G#m7")
 chord.sharp?
@@ -195,6 +214,8 @@ chord.addition
 #=> "m7"
 ```
 
+`Note`では、`sharp?`, `flat?`、と`position`が使えます。
+
 新しい`Note`や`Chord`を作る時に、パウンド記号「#」がシャープ記号「♯」になり、<br/>
 小文字の「b」がフラット記号「♭」になります。
 ```ruby
@@ -207,8 +228,9 @@ flat_chord.name
 ```
 
 ##`key_change()`のオプション
-`key_change()`の２つ目の引数はオプションです。<br/>
+`key_change()`の２つ目の引数をオプションとして定義できます。<br/>
 これは、歌のコードはどんな風に転調されるかを決めます。
+尚、optionを省略しても良いです。
 
 ４つのオプションがあります：
 ```ruby
@@ -225,10 +247,9 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :sharp)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A A♭ F♯m D "
+new_chords = song.chord_names
+p new_chords
+#=> ["A", "A♭", "F♯m", "D"]
 
 # そもそもフラットであったコードはそのままフラットに変換されます
 # それ以外のコードはシャープに変換されます（「F♯m」みたいに）
@@ -241,10 +262,8 @@ chords = ["G", "F♯", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :flat)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A G♯ G♭m D "
+new_chords = song.chord_names
+#=> ["A", "G♯", "G♭m", "D"]
 
 # そもそもシャープであったコードはそのままシャープに変換されます
 # それ以外のコードはフラットに変換されます（「G♭m」みたいに）
@@ -257,10 +276,8 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_sharp)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A G♯ F♯m D "
+p new_chords
+#=> ["A", "G♯", "F♯m", "D"]
 
 # 対象となるコードは全部シャープに変換されます
 ```
@@ -272,10 +289,10 @@ chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
 song = song.key_change(new_key, :all_flat)
-song.chords.each do |chord|
-  print "#{chord.name} "
-end
-#=> "A A♭ G♭m D "
+new_chords = song.chord_names
+p new_chords
+#=> ["A", "A♭", "G♭m", "D"]
+
 # 対象となるコードは全部フラットに変換されます
 ```
 ##使用可能なコード
