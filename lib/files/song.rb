@@ -1,7 +1,7 @@
 class Song
 
-  SHARP_CHORDS = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-  FLAT_CHORDS = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
+  #SHARP_CHORDS = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
+  #FLAT_CHORDS = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
 
   attr_accessor :key, :chords, :title, :tempo
 
