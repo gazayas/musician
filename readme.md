@@ -40,6 +40,8 @@ p song.key
 Here's a look at the `Chord` class
 ```ruby
 chord = Chord.new("G#m7")
+chord.name
+#=> "G♯m7"
 chord.sharp?
 #=> true
 chord.flat?
@@ -199,6 +201,8 @@ p song.key
 `Chord`クラスのメソッド：
 ```ruby
 chord = Chord.new("G#m7")
+chord.name
+#=> "G♯m7"
 chord.sharp?
 #=> true
 chord.flat?
