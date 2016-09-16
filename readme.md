@@ -16,7 +16,7 @@ p song.chord_names
 ```
 
 There are 3 classes in `musician`:<br/>
-`Note`, `Chord`, and `Song`
+`Note`, `Chord`, and `Song`. `Chord` is inherited from `Note`
 
 When a `Song` instance variable is created, the key (a string) and the chords (an array of strings)
 become a new object, `Chord`
