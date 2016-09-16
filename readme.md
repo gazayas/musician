@@ -15,7 +15,7 @@ p song.chord_names
 #=> ["A", "G♯", "F♯m", "D"]
 ```
 
-There are 3 classes in `musician`
+There are 3 classes in `musician`:<br/>
 `Note`, `Chord`, and `Song`
 
 When a `Song` instance variable is created, the key (a string) and the chords (an array of strings)
@@ -34,7 +34,7 @@ p song.chord_names
 Looking at the previous example of code, you can see that `song.key` returns an object instead of a string
 ```ruby
 p song.key
-#=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
+#=> #<Chord:0x007fb16102cb90 @name="G", @raw_name="G"... >
 ```
 
 Here's a look at the `Chord` class
@@ -57,10 +57,10 @@ it will automatically be changed into a sharp "♯" or flat "♭" respectively
 
 ```ruby
 sharp_chord = Chord.new("G#")
-sharp_chord.name
+p sharp_chord.name
 #=> "G♯"
 flat_chord = Chord.new("Gb")
-flat_chord.name
+p flat_chord.name
 #=> "G♭"
 ```
 ###Key change options
@@ -81,7 +81,7 @@ key = "G"
 chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
-song = song.key_change(new_key, :sharp)
+song = song.key_change(new_key, :sharp) # since :sharp is the default, it doesn't need to be written
 p song.chord_names
 #=> ["A", "A♭", "F♯m", "D"]
 
@@ -163,18 +163,18 @@ Haven't put these chords in yet:
 
 `$ gem install musician`
 
-##`musician`の主要のメソッドは`key_change()`、歌の転調を行うメソッドです。
+##`musician`の主要の機能は`key_change()`、歌の転調を行うメソッドです。
 
 ```ruby
 key = "G"
 chords = ["G", "F#", "Em", "C"]
 song = Song.new(key, chords)
-song = song.key_change("A") # 「A」に転調します
+song = song.key_change("A") # "A"に転調します
 p song.chord_names
 #=> ["A", "G♯", "F♯m", "D"]
 ```
 
-`musician`では、３つのクラスが存在しています。
+`musician`では、３つのクラスが存在しています。<br/>
 `Note`、それを継承する`Chord`、そして`Song`です。
 
 `Song`のインスタンス変数が作られる時に、渡されたkey(文字列)とchords(文字列の配列)が`Chord`クラスのインスタンス変数として作られます。
@@ -191,7 +191,7 @@ p song.chord_names
 上記のコードで定義されたsongインスタンス変数のキーである`song.key`を参照すると、オブジェクトが返されることが分かります。
 ```ruby
 p song.key
-#=> #<Chord:0x007fb16102cb90 @name="G", @sanitized_name="G"... >
+#=> #<Chord:0x007fb16102cb90 @name="G", @raw_name="G"... >
 ```
 
 `Chord`クラスのメソッド：
@@ -215,17 +215,17 @@ chord.addition
 小文字の「b」がフラット記号「♭」になります。
 ```ruby
 sharp_chord = Chord.new("G#")
-sharp_chord.name
+p sharp_chord.name
 #=> "G♯"
 flat_chord = Chord.new("Gb")
-flat_chord.name
+p flat_chord.name
 #=> "G♭"
 ```
 
 ##`key_change()`のオプション
 `key_change()`の２つ目の引数をオプションとして定義できます。<br/>
-これは、歌のコードはどんな風に転調されるかを決めます。
-尚、optionを省略しても良いです。
+これは、歌のコードはどんな風に転調されるかを決めます。<br/>
+尚、optionを省略しても大丈夫です。
 
 ４つのオプションがあります：
 ```ruby
