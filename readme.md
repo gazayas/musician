@@ -138,6 +138,8 @@ The following chords are supported:
 ```ruby
 # Any of these can be added at the end of a chord or key
 # for example: "Am7"
+"add2"
+"add9"
 "dim7"
 "dim"
 "2"
@@ -147,19 +149,15 @@ The following chords are supported:
 "maj"
 "m7"
 "m"
-"7"
-"6"
-"9"
 "aug"
+"2"
+"6"
+"7"
+"9"
 "11"
 ```
-##Not yet
-Haven't put these chords in yet:
-```ruby
-"add2"
-"add9"
-```
-
+<br/>
+<br/>
 
 #musician
 
@@ -299,6 +297,8 @@ p song.chord_names
 ```ruby
 # コードやキーの語尾として追加できます
 # 例えば: "Am7"
+"add2"
+"add9"
 "dim7"
 "dim"
 "2"
@@ -308,16 +308,10 @@ p song.chord_names
 "maj"
 "m7"
 "m"
-"7"
-"6"
-"9"
 "aug"
+"2"
+"6"
+"7"
+"9"
 "11"
-```
-
-##まだ
-下記のadditionはまだ使えません：
-```ruby
-"add2"
-"add9"
 ```
