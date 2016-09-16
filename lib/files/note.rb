@@ -1,16 +1,16 @@
 class Note
 
+  # この定数を musician.rb の方に入れるかな
   Sharp = "♯"
   Flat = "♭"
+  SHARP_CHORDS = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
+  FLAT_CHORDS = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
 
   attr_accessor :name
-  attr_reader :Sharp_chords, :Flat_chords
 
   def initialize(name)
     @name = name
     @name = change_symbol
-    @Sharp_chords = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
-    @Flat_chords = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
   end
 
   def change_symbol
@@ -28,9 +28,9 @@ class Note
 
   def position
     if sharp?
-      @Sharp_chords.index(name)
+      SHARP_CHORDS.index(name)
     else
-      @Flat_chords.index(name)
+      FLAT_CHORDS.index(name)
     end
   end
 

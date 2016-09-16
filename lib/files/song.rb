@@ -1,5 +1,8 @@
 class Song
 
+  SHARP_CHORDS = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
+  FLAT_CHORDS = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
+
   attr_accessor :key, :chords, :title, :tempo
 
   # keyは文字列で、chordsは文字列の配列
@@ -13,7 +16,7 @@ class Song
     @tempo = ""
   end
 
-  def key_change(new_key, option)
+  def key_change(new_key, option) # option=:sharp にすること
     # unless new_key.instance_of? Chord then new_key = Chord.new(new_key)
     new_key = Chord.new(new_key) # もうすでにChordクラスであればこれを飛ばすようにする
 
@@ -47,20 +50,20 @@ class Song
       case option
       when :default || :sharp then
         if chord.flat?
-          chord.Flat_chords[new_position] + chord.addition
+          FLAT_CHORDS[new_position] + chord.addition
         else
-          chord.Sharp_chords[new_position] + chord.addition
+          SHARP_CHORDS[new_position] + chord.addition
         end
       when :flat then
         if chord.sharp?
-          chord.Sharp_chords[new_position] + chord.addition
+          SHARP_CHORDS[new_position] + chord.addition
         else
-          chord.Flat_chords[new_position] + chord.addition
+          FLAT_CHORDS[new_position] + chord.addition
         end
       when :all_sharp
-        chord.Sharp_chords[new_position] + chord.addition
+        SHARP_CHORDS[new_position] + chord.addition
       when :all_flat
-        chord.Flat_chords[new_position] + chord.addition
+        FLAT_CHORDS[new_position] + chord.addition
       end
     end
 
