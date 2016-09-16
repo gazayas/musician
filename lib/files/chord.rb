@@ -22,9 +22,9 @@ class Chord < Note
   # note.rbだけで置くようにしたいけど、raw_nameが。。。
   def position
     if sharp?
-      SHARP_CHORDS.index(raw_name)
+      SHARP_CHORDS.index(@raw_name)
     else
-      FLAT_CHORDS.index(raw_name)
+      FLAT_CHORDS.index(@raw_name)
     end
   end
 
@@ -40,7 +40,7 @@ class Chord < Note
       ADDITIONS.each do |add|
         regexp = Regexp.new(add)
         raw = Array.new
-        if name.match(regexp)
+        if @name.match(regexp)
           addition = add
           raw << name.gsub(add, "")
           raw << add
