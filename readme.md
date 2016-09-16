@@ -52,6 +52,8 @@ chord.addition
 #=> "m7"
 ```
 
+The `sharp?`, `flat?`, and `position` methods can also be used with the `Note` class
+
 If you pass a pound sign "#" or a lowercase "b" when creating an instance variable,
 it will automatically be changed into a sharp "♯" or flat "♭" respectively
 
