@@ -2,6 +2,10 @@ class Chord < Note
 
   attr_accessor :name, :raw_name, :addition
 
+  # split chordの場合の対応をしないといけない
+  # その場合だと、raw_nameやadditionをハッシュにして、raw_name[:chord1]とraw_name[:chord2]とか
+  # 新しいブランチを作ってそれをやればいいかな
+  # それができたら、song.key_changeがsplit_chordに対応できるようにできるかもしれない
   def initialize(initial_name)
     # Chord.name と Note.name はそもそも違うものなのでOOPにおいては良くないかもしれない
     # こう: 「Note.name #=> "G"」  「Chord.name #=> "Gm7"」

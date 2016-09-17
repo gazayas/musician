@@ -2,7 +2,6 @@ class Song
 
   attr_accessor :key, :chords, :title, :tempo
 
-
   def initialize(key, chords)
     # 文字列かChordのインスタンス変数、両方で定義できるように
     unless key.instance_of? Chord
