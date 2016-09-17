@@ -155,6 +155,12 @@ The following chords are supported:
 "9"
 "11"
 ```
+
+##Pro Tip
+When calling `song.key_change(key, chords)`, <br/>
+The variables `key` and `chords` can be passed as either a string or a `Chord` object<br/>
+(Make sure `chords` is an array)
+
 <br/>
 <br/>
 
@@ -313,3 +319,8 @@ p song.chord_names
 "9"
 "11"
 ```
+
+#裏技
+`song.key_change(key, chords)`を呼ぶ時に、
+変数のkeyとchordsは文字列か`Chord`のインスタンス変数、どちらでも構いません<br/>
+（`chords`は配列でなければなりません）

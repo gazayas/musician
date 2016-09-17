@@ -28,6 +28,20 @@ class KeyChangeTest < Minitest::Test
     assert_equal new_key, song.key.name
   end
 
+  def test_song_instance_made_with_chord_instance
+    key = Chord.new("G")
+    chords = [Chord.new("G"), Chord.new("Em")]
+    song = Song.new(key, chords)
+    assert_equal "Em", song.chords[1].name
+  end
+
+  def test_song_instance_made_with_strings
+    key = "G"
+    chords = ["G", "Em"]
+    song = Song.new(key, chords)
+    assert_equal song.chords[0].name, "G"
+  end
+
   # ADDITIONSに関するテスト
   def test_add2
     chord = Chord.new("Cadd2")

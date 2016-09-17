@@ -2,12 +2,23 @@ class Song
 
   attr_accessor :key, :chords, :title, :tempo
 
-  # keyは文字列で、chordsは文字列の配列
+
   def initialize(key, chords)
-    @key = Chord.new(key)
-    @chords = chords.map do |chord|
-      Chord.new(chord)
+    # 文字列かChordのインスタンス変数、両方で定義できるように
+    unless key.instance_of? Chord
+      @key = Chord.new(key)
+    else
+      @key = key
     end
+
+    @chords = chords.map do |chord|
+      unless chord.instance_of? Chord
+        Chord.new(chord)
+      else
+        chord
+      end
+    end
+
     # 作る時に定義しなくていいけど、一応自分で定義できる
     @title = ""
     @tempo = ""
@@ -20,8 +31,10 @@ class Song
   end
 
   def key_change(new_key, option=:sharp)
-    # unless new_key.instance_of? Chord then new_key = Chord.new(new_key)
-    new_key = Chord.new(new_key) # もうすでにChordクラスであればこれを飛ばすようにする
+
+    unless new_key.instance_of? Chord
+      new_key = Chord.new(new_key)
+    end
 
     if key.position < new_key.position
       key_up = true

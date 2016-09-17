@@ -3,17 +3,12 @@ class Note
   attr_accessor :name
 
   def initialize(name)
-    @name = name
-    @name = change_symbol
+    @name = change_symbol(name)
   end
 
-  def change_symbol
-    @name = @name.tr("#b", "#{Sharp}#{Flat}") # gsub()の変わりに「tr」を使ってる（・ω・）
-  end
-
-  # Noteを初期化する時に#は♯に変換されるから両方が要るかな。。。
+  # 「#」と「b」要らんと思う
   def sharp?
-    !!@name.match(/#/) || !!@name.match(/♯/) # 真偽を返して欲しかったから次のように書きました
+    !!@name.match(/#/) || !!@name.match(/♯/) # 真偽を返して欲しかった「!!」を入れました
   end
 
   def flat?
@@ -26,6 +21,12 @@ class Note
     else
       FLAT_CHORDS.index(@name)
     end
+  end
+
+  private
+
+  def change_symbol(note)
+    note = note.tr("#b", "#{Sharp}#{Flat}") # gsub()の変わりに「tr」を使ってる（・ω・）
   end
 
 end

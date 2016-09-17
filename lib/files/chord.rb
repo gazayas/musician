@@ -2,24 +2,20 @@ class Chord < Note
 
   attr_accessor :name, :raw_name, :addition
 
-  def initialize(name)
-    # ちょっとややこしいし良くないかもしれないけど、
-    # 一応 @name が chord の name になってて、@raw_name が addition (maj7, dim とか)なしの name
-    # こう： @name #=> "G♭m" @raw_name #=> "G♭"
-    # でも、Note.name は普通は maj7 や dim とかはないから、OOP においては Chord.name はおかしいかもしれない
-    # Note.name は Chord.name と違うので、OOPの考え方においては良くないかもしれない。
-    # でも、Note.name と Chord.name はバリ分かりやすいと思うのでそのようにしたい。
-    # とりあえす、Chord.name は Note.name とは違うという風に書いています。
-    @name = name
-    raw_elements = sanitize_method
-    super(raw_elements[0]) # 一応 raw_name で Note のインスタンス変数を作る
-    @raw_name = change_symbol
-    @addition = raw_elements[1]
-    @name = name
-    @name = change_symbol
+  def initialize(initial_name)
+    # Chord.name と Note.name はそもそも違うものなのでOOPにおいては良くないかもしれない
+    # こう: 「Note.name #=> "G"」  「Chord.name #=> "Gm7"」
+    # でも、Note.nameとChord.nameは分かりやすいので、これで行きます。
+    # そのために、Noteのインスタンス変数をadditionなしで作ってから、name, raw_nameとadditionを定義しています。
+
+    raw_elements = sanitize(initial_name)
+    super(raw_elements[:raw_name]) # Noteのインスタンス変数を作る
+
+    @name = change_symbol(initial_name)
+    @raw_name = change_symbol(raw_elements[:raw_name])
+    @addition = raw_elements[:addition]
   end
 
-  # note.rbだけで置くようにしたいけど、raw_nameが。。。
   def position
     if sharp?
       SHARP_CHORDS.index(@raw_name)
@@ -29,32 +25,31 @@ class Chord < Note
   end
 
   private
-  def sanitize_method
+  def sanitize(initial_name)
 
-    addition = String.new
-    raw = Array.new
+    raw_elements = {
+      raw_name: String.new,
+      addition: String.new
+    }
 
-    # additionがあるか確認する
+    # intial_nameにはadditionがあるかどうか確認する
     finished_search = false
-    until !addition.empty? || finished_search == true
-      ADDITIONS.each do |add|
-        regexp = Regexp.new(add)
-        raw = Array.new
-        if @name.match(regexp)
-          addition = add
-          raw << name.gsub(add, "")
-          raw << add
+    until !(raw_elements[:addition].empty?) || finished_search == true
+      ADDITIONS.each do |addition|
+        regexp = Regexp.new(addition)
+        if initial_name.match(regexp)
+          raw_elements[:raw_name] = initial_name.gsub(addition, "")
+          raw_elements[:addition] = addition
           break
         end
       end
       # もしadditionがなければ、nameをそのまま返して、additionが空の配列のまま返す
-      if addition.empty?
-        raw << name
-        raw << addition
+      if raw_elements[:addition].empty?
+        raw_elements[:raw_name] = initial_name
       end
       finished_search = true
     end
-    raw
+    raw_elements
   end
 
 end
