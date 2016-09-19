@@ -1,5 +1,7 @@
 class Chord < Note
 
+  ADDITIONS = ["add2", "add9", "dim7", "dim", "sus4", "sus", "maj7", "maj", "m7", "m", "aug", "2", "6", "7", "9", "11"]
+
   attr_accessor :name, :raw_name, :addition
 
   # split chordの場合の対応をしないといけない

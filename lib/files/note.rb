@@ -1,5 +1,10 @@
 class Note
 
+  SHARP = "♯"
+  FLAT = "♭"
+  SHARP_CHORDS = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
+  FLAT_CHORDS = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"]
+
   attr_accessor :name
 
   def initialize(name)
@@ -26,7 +31,7 @@ class Note
   private
 
   def change_symbol(note)
-    note = note.tr("#b", "#{Sharp}#{Flat}") # gsub()の変わりに「tr」を使ってる（・ω・）
+    note = note.tr("#b", "#{SHARP}#{FLAT}") # gsub()の変わりに「tr」を使ってる（・ω・）
   end
 
 end

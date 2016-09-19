@@ -65,20 +65,20 @@ class Song
       case option
       when :sharp then
         if chord.flat?
-          FLAT_CHORDS[new_position] + chord.addition
+          Note::FLAT_CHORDS[new_position] + chord.addition
         else
-          SHARP_CHORDS[new_position] + chord.addition
+          Note::SHARP_CHORDS[new_position] + chord.addition
         end
       when :flat then
         if chord.sharp?
-          SHARP_CHORDS[new_position] + chord.addition
+          Note::SHARP_CHORDS[new_position] + chord.addition
         else
-          FLAT_CHORDS[new_position] + chord.addition
+          Note::FLAT_CHORDS[new_position] + chord.addition
         end
       when :all_sharp
-        SHARP_CHORDS[new_position] + chord.addition
+        Note::SHARP_CHORDS[new_position] + chord.addition
       when :all_flat
-        FLAT_CHORDS[new_position] + chord.addition
+        Note::FLAT_CHORDS[new_position] + chord.addition
       end
     end
 
