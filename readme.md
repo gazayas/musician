@@ -210,8 +210,8 @@ chord.sharp?
 #=> true
 chord.flat?
 #=> false
-chord.position # 出力は「C」を１番目とします
-#=> 9
+chord.position # 「C」は０番目です
+#=> 8
 chord.raw_name
 #=> "G♯"
 chord.addition
