@@ -1,6 +1,6 @@
 #musician :musical_keyboard:
 
-[![Gem Version](http://img.shields.io/gem/v/musician.svg?style=flat-square)](https://rubygems.org/gems/musician)
+[![Gem](https://img.shields.io/gem/v/musician.svg?style=plastic)](https://rubygems.org/gems/musician)
 ## Installation
 
 `$ gem install musician`
