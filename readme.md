@@ -1,4 +1,4 @@
-#musician [![gem](https://img.shields.io/gem/v/formatador.svg)]
+#musician ![gem](https://github.com/gazayas/musician/releases/latest)
 
 ## Installation
 
