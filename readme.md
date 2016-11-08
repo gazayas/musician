@@ -1,4 +1,4 @@
-#musician
+#musician (https://img.shields.io/gem/v/formatador.svg)
 
 ## Installation
 
