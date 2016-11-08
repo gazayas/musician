@@ -1,6 +1,6 @@
 #musician :musical_keyboard:
 
-[![Gem](https://img.shields.io/gem/v/formatador.svg)](https://github.com/gazayas/musician/releases/latest)
+[![Gem Version](http://img.shields.io/gem/v/suchgem.svg)](https://github.com/gazayas/musician/releases/latest)
 
 ## Installation
 
