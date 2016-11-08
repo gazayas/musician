@@ -1,0 +1,25 @@
+{
+	"boolean": [
+		"help",
+		"version"
+	],
+	"string": [
+		"label",
+		"status",
+		"color",
+		"style",
+		"format",
+		"logo",
+		"width",
+		"llink",
+		"rlink"
+	],
+	"alias": {
+		"help": [
+			"h"
+		],
+		"version": [
+			"V"
+		]
+	}
+}
