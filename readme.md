@@ -1,6 +1,6 @@
 #musician :musical_keyboard:
 
-[![Gem Version](http://img.shields.io/gem/v/suchgem.svg)](https://github.com/gazayas/musician/releases/latest/tag/0.0.5)
+[![Gem Version](http://img.shields.io/gem/v/suchgem.svg)](https://rubygems.org/gems/musician)
 
 ## Installation
 
