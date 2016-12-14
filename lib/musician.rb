@@ -1,4 +1,6 @@
-require 'files/note'
-require 'files/chord'
-require 'files/song'
-require 'files/music'
+module Musician
+  require 'files/note'
+  require 'files/chord'
+  require 'files/song'
+  require 'files/music'
+end
