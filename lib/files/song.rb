@@ -48,7 +48,7 @@ module Musician
         difference = 0
       end
 
-      new_chord_array = []
+      new_chord_array = Array.new
 
       new_chord_array = chords.map do |chord|
         if key_up == true
