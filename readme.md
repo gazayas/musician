@@ -1,4 +1,4 @@
-#musician :musical_keyboard:
+# musician :musical_keyboard:
 
 [![Gem](https://img.shields.io/gem/v/musician.svg?style=plastic)](https://rubygems.org/gems/musician)
 ## Installation
@@ -28,11 +28,12 @@ p song.chords
 # will return an array of objects
 
 # if you just want the chords as an array of strings though,
+# the following will return that for you, like in the example code above
 p song.chord_names
-# will return that for you, like in the example code above
 ```
 
-Looking at the previous example of code, you can see that `song.key` returns an object instead of a string
+Looking at the previous example of code,
+you can see that `song.key` returns an object instead of a string
 ```ruby
 p song.key
 #=> #<Chord:0x007fb16102cb90 @name="G", @raw_name="G"... >
@@ -68,7 +69,7 @@ flat_chord = Chord.new("Gb")
 p flat_chord.name
 #=> "G♭"
 ```
-###Key change options
+### Key change options
 When the `key_change()` method is called, an option can be passed as the second argument.<br/>
 This determines how the chords of the song are changed.
 
@@ -80,13 +81,13 @@ There are 4 options that can be chosen from
 :all_flat
 ```
 
-###Option 1 (:sharp)
+### Option 1 (:sharp)
 ```ruby
 key = "G"
 chords = ["G", "Gb", "Em", "C"]
 song = Song.new(key, chords)
 new_key = "A"
-song = song.key_change(new_key, :sharp) # since :sharp is the default, it doesn't need to be written
+song = song.key_change(new_key)
 p song.chord_names
 #=> ["A", "A♭", "F♯m", "D"]
 
@@ -94,7 +95,7 @@ p song.chord_names
 # In any other case, they will become sharp (Like "F♯m")
 ```
 
-###Option 2 (:flat)
+### Option 2 (:flat)
 ```ruby
 key = "G"
 chords = ["G", "F♯", "Em", "C"]
@@ -108,7 +109,7 @@ p song.chord_names
 # In any other case, they will become flat (Like "G♭m")
 ```
 
-###Option 3 (:all_sharp)
+### Option 3 (:all_sharp)
 ```ruby
 key = "G"
 chords = ["G", "Gb", "Em", "C"]
@@ -121,7 +122,7 @@ p song.chord_names
 # All applicable chords will be changed into sharps
 ```
 
-###Option 4 (:all_flat)
+### Option 4 (:all_flat)
 ```ruby
 key = "G"
 chords = ["G", "Gb", "Em", "C"]
@@ -134,7 +135,7 @@ p song.chord_names
 # All applicable chords will be changed into flats
 ```
 
-##Supported chords
+## Supported chords
 The following chords are supported:
 ```ruby
 # Any of these can be added at the end of a chord or key
@@ -157,7 +158,7 @@ The following chords are supported:
 "11"
 ```
 
-##Pro Tip
+## Pro Tip
 When calling `song.key_change(key, chords)`, <br/>
 The variables `key` and `chords` can be passed as either a string or a `Chord` object<br/>
 (Make sure `chords` is an array)
@@ -165,13 +166,11 @@ The variables `key` and `chords` can be passed as either a string or a `Chord` o
 <br/>
 <br/>
 
-#musician
-
-##インストール
+## インストール
 
 `$ gem install musician`
 
-##`musician`の主要の機能は`key_change()`、歌の転調を行うメソッドです。
+## `musician`の主要の機能は`key_change()`、歌の転調を行うメソッドです。
 
 ```ruby
 key = "G"
@@ -232,7 +231,7 @@ p flat_chord.name
 #=> "G♭"
 ```
 
-##`key_change()`のオプション
+## `key_change()`のオプション
 `key_change()`の２つ目の引数をオプションとして定義できます。<br/>
 これは、歌のコードはどんな風に転調されるかを決めます。<br/>
 尚、optionを省略しても大丈夫です。
@@ -245,7 +244,7 @@ p flat_chord.name
 :all_flat
 ```
 
-###オプション１ (:sharp)
+### オプション１ (:sharp)
 ```ruby
 key = "G"
 chords = ["G", "Gb", "Em", "C"]
@@ -259,7 +258,7 @@ p song.chord_names
 # それ以外のコードはシャープに変換されます（「F♯m」みたいに）
 ```
 
-###オプション２ (:flat)
+### オプション２ (:flat)
 ```ruby
 key = "G"
 chords = ["G", "F♯", "Em", "C"]
@@ -273,7 +272,7 @@ p song.chord_names
 # それ以外のコードはフラットに変換されます（「G♭m」みたいに）
 ```
 
-###オプション３ (:all_sharp)
+### オプション３ (:all_sharp)
 ```ruby
 key = "G"
 chords = ["G", "Gb", "Em", "C"]
@@ -286,7 +285,7 @@ p song.chord_names
 # 対象となるコードは全部シャープに変換されます
 ```
 
-###オプション４ (:all_flat)
+### オプション４ (:all_flat)
 ```ruby
 key = "G"
 chords = ["G", "Gb", "Em", "C"]
@@ -298,7 +297,7 @@ p song.chord_names
 
 # 対象となるコードは全部フラットに変換されます
 ```
-##使用可能なコード
+## 使用可能なコード
 下記のコードは使用できます：
 ```ruby
 # コードやキーの語尾として追加できます
@@ -321,7 +320,7 @@ p song.chord_names
 "11"
 ```
 
-#裏技
+# 裏技
 `song.key_change(key, chords)`を呼ぶ時に、
 変数のkeyとchordsは文字列か`Chord`のインスタンス変数、どちらでも構いません<br/>
 （`chords`は配列でなければなりません）
